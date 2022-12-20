@@ -32,17 +32,36 @@
   --ff-display: "Iowan Old Style", serif;
 
   /* Font-Size */
-  --type-h1: 5.61rem;
-  --type-h2: 4.209rem;
-  --type-h3: 3.157rem;
-  --type-h4: 2.369rem;
-  --type-h5: 1.77rem;
-  --type-big-body: 1.33rem;
-  --type-body: 1rem;
-  --type-label: 0.875rem;
   --type-small: 0.8rem;
+  --type-label: 0.875rem;
+  --type-body: 1rem;
+  --type-big-body: 1.2rem;
+  --type-h5: 1.4rem;
+  --type-h4: 1.728rem;
+  --type-h3: 2.074rem;
+  --type-h2: 2.488rem;
+  --type-h1: 2.986rem;
 
   /* Font-Weight */
   --fw-medium: 500;
   --fw-bold: 700;
+}
+
+@media only screen and (min-width: 1200px) {
+  :root {
+    /* Typography */
+    --type-small: 0.8rem;
+    --type-label: 0.875rem;
+    --type-body: 1rem;
+    --type-big-body: 1.33rem;
+    --type-h5: 1.77rem;
+    --type-h4: 2.369rem;
+    --type-h3: 3.157rem;
+    --type-h2: 4.209rem;
+    --type-h1: 5.61rem;
+  }
+  html,
+  body {
+    font-size: 1em;
+  }
 }
