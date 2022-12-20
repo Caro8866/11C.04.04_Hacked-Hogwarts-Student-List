@@ -41,6 +41,36 @@ header {
 .school-logo {
   width: 100px;
 }
+/* TABLE STYLING */
+table {
+  background-color: rgb(245, 245, 245);
+  font-family: inherit;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+thead {
+  background-color: var(--secondary-200);
+  color: white;
+}
+thead th {
+  align-self: center;
+}
+td,
+th {
+  padding: 0.5rem;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+.student-row:nth-child(odd) {
+  background-color: rgb(235, 235, 235);
+}
+
+.student-row:nth-child(even) {
+  background-color: rgb(204, 202, 202);
+}
 /* TABLE OPTIONS STYLING */
 .table-options {
   display: flex;

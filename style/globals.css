@@ -13,7 +13,7 @@
   --button-accent-border: #621b0b;
   --button-primary: #e9e9e9;
   --button-primary-border: var(--button-secondary);
-  --button-secondary: #adadad;
+  --button-secondary: rgb(173, 173, 173, 1);
   --button-secondary-border: #6f6e6e;
 
   /* House Colours */
