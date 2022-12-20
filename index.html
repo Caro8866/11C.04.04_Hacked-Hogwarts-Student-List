@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacked Hogwarts</title>
+    <link rel="stylesheet" href="style/reset.css" />
+    <link rel="stylesheet" href="style/globals.css" />
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="assets/icons/logo.png" alt="Hogwarts School Logo" class="school-logo" />
+      <h1>Hogwarts School of Witchcraft and Wizardry</h1>
+    </header>
+    <main>
+      <div class="container">
+        <h2>Students from the class of 1991</h2>
+        <div class="table-options">
+          <select name="filter" id="filter">
+            <option value="*">Show All Students</option>
+            <option value="studentHouse Gryffindor">Show Gryffindor Students</option>
+            <option value="studentHouse Ravenclaw">Show Ravenclaw Students</option>
+            <option value="studentHouse Hufflepuff">Show Hufflepuff Students</option>
+            <option value="studentHouse Slytherin">Show Slytherin Students</option>
+            <option value="isEnrolled">Show Enrolled Students</option>
+            <option value="isExpelled">Show Expelled Students</option>
+            <option value="isPrefect">Show Prefects</option>
+            <option value="isInquisitorial">Show Inquisitorial Squad</option>
+          </select>
+          <input type="text" placeholder="Type to Search..." id="search-bar" />
+        </div>
+        <table id="student-list">
+          <thead>
+            <tr id="sorting">
+              <th>Picture</th>
+              <th data-action="sort" data-sort-direction="asc" data-sort="house">House</th>
+              <th data-action="sort" data-sort-direction="asc" data-sort="firstName">First Name</th>
+              <th data-action="sort" data-sort-direction="asc" data-sort="lastName">Last Name</th>
+              <th data-action="sort" data-sort-direction="asc" data-sort="prefect">Prefect</th>
+              <th data-action="sort" data-sort-direction="asc" data-sort="ingSquad">Inquisitorial Squad</th>
+              <th>View Details</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tbody id="student-list-body">
+            <!-- Student template will be copied and inserted here-->
+            <tr class="student-row">
+              <td><img src="assets/images/potter_h.png" alt="Harry potter" height="40" /></td>
+              <td><img src="assets/house-badges/gryffindor-badge.png" alt="" height="40" class="house-badge" /></td>
+              <td>Harry</td>
+              <td>Potter</td>
+              <td><img src="assets/icons/prefect-false.svg" alt="prefect badge " class="prefect-badge icon" /></td>
+              <td><img src="assets/icons/squad-false.svg" alt="inquisitorial squad badge" class="inq-badge icon" /></td>
+              <td><button class="modalButton">View Details</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <footer>
+      <div class="information-bar">
+        <ul>
+          <li>Total: <span class="total-students">8</span></li>
+          <li>Enrolled: <span class="enrolled-students">8</span></li>
+          <li>Expelled: <span class="expelled-students">8</span></li>
+          <li>Gryffindor: <span class="gryffindor-students">8</span></li>
+          <li>Ravenclaw: <span class="ravenclaw-students">8</span></li>
+          <li>Hufflepuff: <span class="hufflepuff-students">8</span></li>
+          <li>Slytherin: <span class="slytherin-students">8</span></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+  <template class="student-template">
+    <tr class="student-row">
+      <td class="student-image"><img src="assets/images/potter_h.png" alt="Harry potter" height="40" /></td>
+      <td class="student-house"><img src="assets/house-badges/gryffindor-badge.png" alt="" height="40" class="house-badge" /></td>
+      <td class="student-first-name">Harry</td>
+      <td class="student-last-name">Potter</td>
+      <td class="student-prefect"><img src="assets/icons/prefect-false.svg" alt="prefect badge " class="prefect-badge icon" /></td>
+      <td class="student-inq-squad"><img src="assets/icons/squad-false.svg" alt="inquisitorial squad badge" class="inq-badge icon" /></td>
+      <td class="student-modal"><button class="modalButton">View Details</button></td>
+    </tr>
+  </template>
+  <script src="scripts/main.js"></script>
+</html>
