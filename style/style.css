@@ -207,12 +207,16 @@ fieldset {
   gap: 0.8rem;
   margin-top: 1rem;
 }
+button {
+  cursor: pointer;
+}
 .button {
   width: 100%;
   padding: 0.5rem 1em;
   font: inherit;
   font-size: var(--type-h5);
   border-radius: 5px;
+  cursor: pointer;
 }
 .accent-button {
   background-color: var(--button-accent);

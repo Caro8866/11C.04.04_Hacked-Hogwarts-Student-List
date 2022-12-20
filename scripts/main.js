@@ -187,13 +187,23 @@ function displayStudent(student) {
       buildList();
     });
     document.querySelector(".expelBtn").addEventListener("click", () => {
-      if (student.expelled === 0) {
-        student.expelled = 1;
-        expelledStudents.push(student);
+      document.querySelector(".expelBox").classList.remove("hidden");
+      document.querySelector(".confirmExpel").addEventListener("click", () => {
+        if (student.expelled === 0) {
+          student.expelled = 1;
+          expelledStudents.push(student);
 
-        allStudents.splice(allStudents.indexOf(student), 1);
-        console.log(expelledStudents);
-      }
+          allStudents.splice(allStudents.indexOf(student), 1);
+          console.log(expelledStudents);
+        }
+        document.querySelector(".expelBox").classList.add("hidden");
+        document.querySelector(".modal").classList.add("hidden");
+        document.querySelector(".modal").classList.remove(`${student.house}`);
+        buildList();
+      });
+      document.querySelector(".uncomfirmExpel").addEventListener("click", () => {
+        document.querySelector(".expelBox").classList.add("hidden");
+      });
     });
   });
 
