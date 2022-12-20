@@ -95,6 +95,22 @@ function prepareObject(jsonObject) {
 
   // house
   student.house = house.substring(1, 0).toUpperCase() + house.substring(1).toLowerCase();
+
+  // Blood
+  loadBloodJSON();
+
+  async function loadBloodJSON() {
+    const response = await fetch(bloodJsonURL);
+    const bloodFamilyList = await response.json();
+
+    student.blood = updateBlood(bloodFamilyList);
+
+    function updateBlood(bloodFamilyList) {
+      if (bloodFamilyList.pure.includes(student.lastName) === true) return "Pure Blood";
+      else if (bloodFamilyList.half.includes(student.lastName) === true) return "Half Blood";
+      return "Muggle";
+    }
+  }
   return student;
 }
 
