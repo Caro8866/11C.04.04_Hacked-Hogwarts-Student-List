@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap");
+:root {
+  /* COLOURS */
+  --primary-100: rgba(253, 239, 215, 1);
+  --primary-200: rgba(221, 172, 89, 1);
+  --primary-300: rgba(108, 76, 21, 1);
+
+  --secondary-100: rgba(117, 121, 126, 1);
+  --secondary-200: rgba(41, 47, 57, 1);
+
+  /* Button Colours */
+  --button-accent: #91331d;
+  --button-accent-border: #621b0b;
+  --button-primary: #e9e9e9;
+  --button-primary-border: var(--button-secondary);
+  --button-secondary: rgb(173, 173, 173, 1);
+  --button-secondary-border: #6f6e6e;
+
+  /* House Colours */
+  --gryffindor-primary: rgba(102, 0, 1, 0.8);
+  --ravenclaw-primary: rgba(14, 26, 64, 0.8);
+  --slytherin-primary: rgba(8, 51, 23, 0.8);
+  --hufflepuff-primary: rgba(11, 11, 11, 0.8);
+
+  --gryffindor-secondary: rgba(176, 144, 42, 1);
+  --ravenclaw-secondary: rgba(113, 113, 113, 1);
+  --slytherin-secondary: rgba(205, 162, 49, 1);
+  --hufflepuff-secondary: rgba(96, 96, 96, 1);
+
+  /* FONT COLOURS */
+  --fc-primary-100: rgb(248, 248, 248);
+  --fc-secondary-100: rgb(6, 15, 27);
+  /* TYPOGRAPHY */
+  font-size: 1rem;
+  /* Font-Family */
+  --ff-main: "Inter", sans-serif;
+  --ff-display: "Iowan Old Style", serif;
+
+  /* Font-Size */
+  --type-small: 0.8rem;
+  --type-label: 0.875rem;
+  --type-body: 1rem;
+  --type-big-body: 1.2rem;
+  --type-h5: 1.4rem;
+  --type-h4: 1.728rem;
+  --type-h3: 2.074rem;
+  --type-h2: 2.488rem;
+  --type-h1: 2.986rem;
+
+  /* Font-Weight */
+  --fw-medium: 500;
+  --fw-bold: 700;
+}
+
+@media only screen and (min-width: 1200px) {
+  :root {
+    /* Typography */
+    --type-small: 0.8rem;
+    --type-label: 0.875rem;
+    --type-body: 1rem;
+    --type-big-body: 1.33rem;
+    --type-h5: 1.77rem;
+    --type-h4: 2.369rem;
+    --type-h3: 3.157rem;
+    --type-h2: 4.209rem;
+    --type-h1: 5.61rem;
+  }
+  html,
+  body {
+    font-size: 1em;
+  }
+}
