@@ -10,7 +10,7 @@ const bloodJsonURL = "https://petlatkea.dk/2021/hogwarts/families.json";
 let allStudents = [];
 let enrolledStudents = [];
 let expelledStudents = [];
-
+let prefectArray = [];
 let studentList;
 
 // Student Prototype Object
@@ -206,8 +206,15 @@ function displayStudent(student) {
       });
     });
   });
-
-  /* clone.querySelector(".prefectBtn").addEventListener("click"), prefectToggle(); */
+  clone.querySelector(".prefectBtn").addEventListener("click", () => {
+    if (student.expelled === 0) {
+      student.prefect = 1;
+      prefectArray.push(student);
+    } else {
+      alert("Not possible to set expelled student as prefect!");
+    }
+    console.log(prefectArray);
+  });
   /* clone.querySelector(".squadBtn").addEventListener("click"), squadToggle(); */
 
   // append clone to list
