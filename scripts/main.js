@@ -25,6 +25,7 @@ const Student = {
   blood: "",
   isPrefect: 0,
   isInqSquad: 0,
+  expelled: 0,
 };
 const settings = {
   filterBy: "allStudents",
@@ -183,15 +184,26 @@ function displayStudent(student) {
     document.querySelector("#closeButton").addEventListener("click", () => {
       document.querySelector(".modal").classList.add("hidden");
       document.querySelector(".modal").classList.remove(`${student.house}`);
+      buildList();
+    });
+    document.querySelector(".expelBtn").addEventListener("click", () => {
+      if (student.expelled === 0) {
+        student.expelled = 1;
+        expelledStudents.push(student);
+
+        allStudents.splice(allStudents.indexOf(student), 1);
+        console.log(expelledStudents);
+      }
     });
   });
-  /* clone.querySelector(".expelBtn").addEventListener("click"), expelStudent(); */
+
   /* clone.querySelector(".prefectBtn").addEventListener("click"), prefectToggle(); */
   /* clone.querySelector(".squadBtn").addEventListener("click"), squadToggle(); */
 
   // append clone to list
   document.querySelector("#student-list-body").appendChild(clone);
 }
+
 /* FILTERING */
 
 function selectFilter(event) {
