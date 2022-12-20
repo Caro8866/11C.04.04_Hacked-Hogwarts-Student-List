@@ -26,21 +26,29 @@ const Student = {
   isPrefect: 0,
   isInqSquad: 0,
 };
-
+const settings = {
+  filterBy: "allStudents",
+  sortBy: "firstName",
+  sortDir: "asc",
+};
 function start() {
   console.log("Ready to start!");
+  registerButtons();
   loadJSON();
 }
-async function loadJSON() {
-  console.log("load JSON");
+function registerButtons() {
+  document.querySelectorAll(".filter").forEach((button) => button.addEventListener("click", selectFilter));
+  document.querySelectorAll("[data-action='sort']").forEach((button) => button.addEventListener("click", selectSort));
+}
 
+async function loadJSON() {
   const response = await fetch(jsonURL);
   const jsonData = await response.json();
   prepareObjects(jsonData);
 }
 function prepareObjects(jsonData) {
   allStudents = jsonData.map(prepareObject);
-  console.log("prepre Objects");
+
   displayList(allStudents);
 }
 
@@ -89,17 +97,22 @@ function prepareObject(jsonObject) {
   return student;
 }
 
-function displayList(activeArray) {
-  console.log("Display List");
+function buildList() {
+  const currentList = filterList(allStudents);
+  const sortedList = sortList(currentList);
+  // console.table(sortedList);
 
+  return sortedList;
+}
+
+function displayList(activeArray) {
   document.querySelector("#student-list-body").innerHTML = ""; // clear list
   activeArray.forEach(displayStudent);
 }
 
 function displayStudent(student) {
   let clone = document.querySelector(".student-template").content.cloneNode(true); // create clone
-  console.log("Display student");
-  console.log(student);
+
   clone.querySelector(".student-first-name").textContent = student.firstName;
   clone.querySelector(".student-last-name").textContent = student.lastName;
 
@@ -166,7 +179,6 @@ function displayStudent(student) {
       document.querySelector(".studentSquad").src = `assets/icons/squad-false.svg`;
     }
     document.querySelector("#closeButton").addEventListener("click", () => {
-      console.log("clollick");
       document.querySelector(".modal").classList.add("hidden");
     });
   });
@@ -176,4 +188,124 @@ function displayStudent(student) {
 
   // append clone to list
   document.querySelector("#student-list-body").appendChild(clone);
+}
+/* FILTERING */
+
+function selectFilter(event) {
+  console.log(event);
+  const filter = event.target.dataset.filter;
+  console.log(`User selected ${filter}`);
+  //filterList(filter);
+  setFilter(filter);
+}
+
+function setFilter(filter) {
+  settings.filterBy = filter;
+  buildList();
+}
+function filterList(filteredList) {
+  // let filteredList = allStudents;
+  if (settings.filterBy === "gryffindor") {
+    // Filtered list of only gryffindor
+    filteredList = allStudents.filter(isGryffindor);
+  } else if (settings.filterBy === "hufflepuff") {
+    // Filtered list of only hufflepuff
+    filteredList = allStudents.filter(isHufflepuff);
+  } else if (settings.filterBy === "ravenclaw") {
+    // Filtered list of only Ravenclaw
+    filteredList = allStudents.filter(isRavenclaw);
+  } else if (settings.filterBy === "slytherin") {
+    // Filtered list of only Slytherin
+    filteredList = allStudents.filter(isSlytherin);
+  } else if (settings.filterBy === "allStudents") {
+    // Filtered list of allStudents
+    filteredList = allStudents;
+  } else if (settings.filterBy === "prefects") {
+    // Filtered list of prefects
+    filteredList = allStudents.filter(isPrefect);
+  } else if (settings.filterBy === "inqSquad") {
+    // Filtered list of inquisatorial squad members
+    filteredList = allStudents.filter(isInqSquad);
+  } else if (settings.filterBy === "expelledStudents") {
+    // Filtered list of inquisatorial squad members
+    filteredList = expelledStudents;
+  } else if (settings.filterBy === "enrolledStudents") {
+    // Filtered list of inquisatorial squad members
+    filteredList = enrolledStudents;
+  }
+  //! NEED TO FIX EXROLLED
+  return filteredList;
+}
+
+function isGryffindor(student) {
+  return student.house === "Gryffindor";
+}
+
+function isHufflepuff(student) {
+  return student.house === "Hufflepuff";
+}
+
+function isRavenclaw(student) {
+  return student.house === "Ravenclaw";
+}
+
+function isSlytherin(student) {
+  return student.house === "Slytherin";
+}
+
+function isPrefect(student) {
+  return student.isPrefect === 1;
+}
+
+function isInqSquad(student) {
+  return student.isInqSquad === 1;
+}
+
+/* SORTING */
+function selectSort(event) {
+  const sortBy = event.target.dataset.sort;
+  const sortDir = event.target.dataset.sortDirection;
+
+  // find prior sortBy element & remove sortBy class
+  const oldElement = document.querySelector(`[data-sort='${settings.sortBy}']`);
+  oldElement.classList.remove("sortby");
+
+  // Highlight active sort
+  event.target.classList.add("sortby");
+
+  // toggle the direction
+  if (sortDir === "asc") {
+    event.target.dataset.sortDirection = "desc";
+  } else {
+    event.target.dataset.sortDirection = "asc";
+  }
+  console.log(`User selected ${sortBy} - ${sortDir}`);
+  setSort(sortBy, sortDir);
+}
+
+function setSort(sortBy, sortDir) {
+  settings.sortBy = sortBy;
+  settings.sortDir = sortDir;
+  buildList();
+}
+
+function sortList(sortedList) {
+  //   let sortedList = allStudents;
+  let direction = 1;
+  if (settings.sortDir === "desc") {
+    direction = -1;
+  } else {
+    direction = 1;
+  }
+  sortedList = sortedList.sort(sortByProperty);
+
+  function sortByProperty(studentA, studentB) {
+    if (studentA[settings.sortBy] < studentB[settings.sortBy]) {
+      return -1 * direction;
+    } else {
+      return 1 * direction;
+    }
+  }
+  // console.table(sortedList);
+  displayList(sortedList);
 }

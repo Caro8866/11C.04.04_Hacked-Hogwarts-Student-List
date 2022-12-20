@@ -19,18 +19,15 @@
         <h2>Students from the class of 1991</h2>
         <div class="table-options">
           <fieldset>
-            <label for="filter">Filter:</label>
-            <select name="filter" id="filter">
-              <option value="*">Show All Students</option>
-              <option value="studentHouse Gryffindor">Show Gryffindor Students</option>
-              <option value="studentHouse Ravenclaw">Show Ravenclaw Students</option>
-              <option value="studentHouse Hufflepuff">Show Hufflepuff Students</option>
-              <option value="studentHouse Slytherin">Show Slytherin Students</option>
-              <option value="isEnrolled">Show Enrolled Students</option>
-              <option value="isExpelled">Show Expelled Students</option>
-              <option value="isPrefect">Show Prefects</option>
-              <option value="isInquisitorial">Show Inquisitorial Squad</option>
-            </select>
+            <button class="filter" data-action="filter" data-filter="allStudents">Show All Students</button>
+            <button class="filter" data-action="filter" data-filter="enrolledStudents">Show Enrolled Students</button>
+            <button class="filter" data-action="filter" data-filter="expelledStudents">Show Expelled Students</button>
+            <button class="filter" data-action="filter" data-filter="gryffindor">Show Gryffindor Students</button>
+            <button class="filter" data-action="filter" data-filter="ravenclaw">Show Ravenclaw Students</button>
+            <button class="filter" data-action="filter" data-filter="hufflepuff">Show Hufflepuff Students</button>
+            <button class="filter" data-action="filter" data-filter="slytherin">Show Slytherin Students</button>
+            <button class="filter" data-action="filter" data-filter="prefects">Show Prefects</button>
+            <button class="filter" data-action="filter" data-filter="inqSquad">Show Inquisitorial Squad</button>
           </fieldset>
           <fieldset>
             <label for="search-bar">Search:</label>
