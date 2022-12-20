@@ -41,6 +41,23 @@ header {
 .school-logo {
   width: 100px;
 }
+/* TABLE OPTIONS STYLING */
+.table-options {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  align-self: center;
+  margin: auto;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+fieldset {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.2rem;
+  align-items: left;
+}
 
 /* INFORMATION BAR STYLING */
 .information-bar {
@@ -68,6 +85,17 @@ header {
     flex-direction: row;
     gap: 2rem;
     text-align: left;
+  }
+  .table-options {
+    flex-direction: row;
+    margin-left: 0rem;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  fieldset {
+    flex-flow: row nowrap;
+    gap: 0.5rem;
+    align-items: center;
   }
   .information-bar {
     padding-block: 1rem;
