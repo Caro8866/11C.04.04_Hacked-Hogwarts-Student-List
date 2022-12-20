@@ -59,7 +59,7 @@
               <td><img src="assets/icons/squad-false.svg" alt="inquisitorial squad badge" class="inq-badge icon" /></td>
               <td><button class="modalButton">View Details</button></td>
 
-              <div class="modal gryffindor">
+              <div class="modal hidden">
                 <header>
                   <img id="studentImage" src="assets/images/hopkins_w.png" alt="Student Pictures" />
                   <img id="studentHouse" width="80" src="assets/house-badges/gryffindor-badge.png" alt="House Badge" />
@@ -172,12 +172,21 @@
         </div>
       </main>
     </div>
-    <div class="dialogBox expelBox">
+    <div class="dialogBox expelBox hidden">
       <p class="title">Are you sure you want to expel <span class="student-first-name"></span> <span class="student-last-name"></span>?</p>
       <p class="subtitle">THIS CANNOT BE UNDONE</p>
       <div class="dialogButtons">
         <button class="accent-button button confirmExpel">Expel Student</button>
         <button class="primary-button button uncomfirmExpel">Do Not Expel</button>
+      </div>
+    </div>
+
+    <div class="dialogBox prefectBox hidden">
+      <p class="title">There are already 2 prefects in <span class="student-box-house"></span></p>
+      <p class="subtitle">CHOOSE WHO TO REMOVE AS PREFECT</p>
+      <div class="dialogButtons">
+        <button class="primary-button button student-one">student 1</button>
+        <button class="primary-button button student-two">student 2</button>
       </div>
     </div>
   </template>

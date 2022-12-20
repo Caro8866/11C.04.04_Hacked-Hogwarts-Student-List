@@ -267,6 +267,13 @@ button {
   background-color: rgb(255, 214, 196);
   border-radius: 10px;
 }
+
+.prefectBox {
+  border: 5px solid var(--slytherin-secondary);
+  background-color: rgb(249, 225, 167);
+  border-radius: 10px;
+}
+
 .dialogButtons {
   display: flex;
   flex-flow: column wrap;

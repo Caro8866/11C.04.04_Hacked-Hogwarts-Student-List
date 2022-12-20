@@ -205,18 +205,36 @@ function displayStudent(student) {
         document.querySelector(".expelBox").classList.add("hidden");
       });
     });
-  });
-  clone.querySelector(".prefectBtn").addEventListener("click", () => {
-    if (student.expelled === 0) {
-      student.prefect = 1;
-      prefectArray.push(student);
-    } else {
-      alert("Not possible to set expelled student as prefect!");
-    }
-    console.log(prefectArray);
+    document.querySelector(".prefectBtn").addEventListener("click", makeprefect(student));
+    /*   document.querySelector(".student-box-house").textContent = student.house;
+
+      if (student.isPrefect === 0) {
+        student.prefect = 1;
+        prefectArray.push(student);
+      } else {
+        alert("Not possible to set expelled student as prefect!");
+      }
+      console.log(prefectArray);
+      buildList();
+    }); */
+
+    document.querySelector(".squadBtn").addEventListener("click", makeSquadMember(student));
   });
   /* clone.querySelector(".squadBtn").addEventListener("click"), squadToggle(); */
 
+  function makeprefect(student) {
+    if (student.isPrefect === 0) {
+      student.prefect = 1;
+      prefectArray.push(student);
+      console.log(prefectArray);
+    }
+  }
+
+  function makeSquadMember(student) {
+    if (student.house === "Slytherin" || student.bloodStatus === "PureBlood") {
+      student.isInqSquad = 1;
+    }
+  }
   // append clone to list
   document.querySelector("#student-list-body").appendChild(clone);
 }
