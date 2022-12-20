@@ -142,6 +142,8 @@ function displayStudent(student) {
   }
 
   clone.querySelector(".modalButton").addEventListener("click", () => {
+    document.querySelector(".modal").classList.remove(`${student.house}`);
+
     document.querySelector(".modal").classList.remove("hidden");
     document.querySelector(".modal").classList.add(`${student.house}`);
     if (student.nickName === "-unknown-") {
@@ -180,6 +182,7 @@ function displayStudent(student) {
     }
     document.querySelector("#closeButton").addEventListener("click", () => {
       document.querySelector(".modal").classList.add("hidden");
+      document.querySelector(".modal").classList.remove(`${student.house}`);
     });
   });
   /* clone.querySelector(".expelBtn").addEventListener("click"), expelStudent(); */

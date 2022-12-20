@@ -129,14 +129,16 @@ fieldset {
 .modal {
   background-color: var(--primary-100);
   border-radius: 6px;
-  padding: 1.3rem 1rem;
-}
-
-.Gryffindor {
-  border: 4px solid var(--gryffindor-primary);
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 90%;
 }
 
 .modal > header {
+  padding-inline: 1rem;
+  text-align: center;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
@@ -144,6 +146,54 @@ fieldset {
   align-items: center;
   font-family: var(--ff-display);
 }
+.modal main {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+  color: var(--primary-100);
+}
+.Gryffindor {
+  border: 6px solid var(--gryffindor-secondary);
+}
+.Gryffindor > main {
+  padding: 1.3rem 1rem;
+  background-color: var(--gryffindor-primary);
+}
+
+.Slytherin {
+  border: 6px solid var(--slytherin-secondary);
+}
+.Slytherin > main {
+  padding: 1.3rem 1rem;
+  background-color: var(--slytherin-primary);
+}
+.Ravenclaw {
+  border: 6px solid var(--ravenclaw-secondary);
+}
+.Ravenclaw > main {
+  padding: 1.3rem 1rem;
+  background-color: var(--ravenclaw-primary);
+}
+.Hufflepuff {
+  border: 6px solid var(--hufflepuff-secondary);
+}
+.Hufflepuff > main {
+  padding: 1.3rem 1rem;
+  background-color: var(--hufflepuff-primary);
+}
+
+#studentImage,
+#studentHouse {
+  height: 100px;
+}
+.modal > main > ul {
+  padding-block: 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+
 .modal > main > ul > li {
   font-weight: var(--fw-bold);
 }
@@ -206,8 +256,20 @@ fieldset {
     gap: 0.5rem;
     align-items: center;
   }
+  .modal {
+    max-width: 600px;
+  }
+  .modal > header {
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+  .modal > main {
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+  }
   .button {
-    max-width: 250px;
+    max-width: 300px;
     font-size: var(--type-body-big);
   }
   .information-bar {
