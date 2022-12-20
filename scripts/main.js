@@ -37,8 +37,8 @@ function start() {
   loadJSON();
 }
 function registerButtons() {
-  /*   document.querySelectorAll(".filter").forEach((button) => button.addEventListener("click", selectFilter));
-   */ document.querySelectorAll("[data-action='sort']").forEach((button) => button.addEventListener("click", selectSort));
+  document.querySelectorAll(".filter").forEach((button) => button.addEventListener("click", selectFilter));
+  document.querySelectorAll("[data-action='sort']").forEach((button) => button.addEventListener("click", selectSort));
 }
 
 async function loadJSON() {
@@ -96,10 +96,15 @@ function prepareObject(jsonObject) {
   student.house = house.substring(1, 0).toUpperCase() + house.substring(1).toLowerCase();
   return student;
 }
+
 function buildList() {
-  const sortedList = sortList(allStudents);
+  const currentList = filterList(allStudents);
+  const sortedList = sortList(currentList);
+  // console.table(sortedList);
+
   return sortedList;
 }
+
 function displayList(activeArray) {
   document.querySelector("#student-list-body").innerHTML = ""; // clear list
   activeArray.forEach(displayStudent);
@@ -184,7 +189,79 @@ function displayStudent(student) {
   // append clone to list
   document.querySelector("#student-list-body").appendChild(clone);
 }
+/* FILTERING */
 
+function selectFilter(event) {
+  console.log(event);
+  const filter = event.target.dataset.filter;
+  console.log(`User selected ${filter}`);
+  //filterList(filter);
+  setFilter(filter);
+}
+
+function setFilter(filter) {
+  settings.filterBy = filter;
+  buildList();
+}
+function filterList(filteredList) {
+  // let filteredList = allStudents;
+  if (settings.filterBy === "gryffindor") {
+    // Filtered list of only gryffindor
+    filteredList = allStudents.filter(isGryffindor);
+  } else if (settings.filterBy === "hufflepuff") {
+    // Filtered list of only hufflepuff
+    filteredList = allStudents.filter(isHufflepuff);
+  } else if (settings.filterBy === "ravenclaw") {
+    // Filtered list of only Ravenclaw
+    filteredList = allStudents.filter(isRavenclaw);
+  } else if (settings.filterBy === "slytherin") {
+    // Filtered list of only Slytherin
+    filteredList = allStudents.filter(isSlytherin);
+  } else if (settings.filterBy === "allStudents") {
+    // Filtered list of allStudents
+    filteredList = allStudents;
+  } else if (settings.filterBy === "prefects") {
+    // Filtered list of prefects
+    filteredList = allStudents.filter(isPrefect);
+  } else if (settings.filterBy === "inqSquad") {
+    // Filtered list of inquisatorial squad members
+    filteredList = allStudents.filter(isInqSquad);
+  } else if (settings.filterBy === "expelledStudents") {
+    // Filtered list of inquisatorial squad members
+    filteredList = expelledStudents;
+  } else if (settings.filterBy === "enrolledStudents") {
+    // Filtered list of inquisatorial squad members
+    filteredList = enrolledStudents;
+  }
+  //! NEED TO FIX EXROLLED
+  return filteredList;
+}
+
+function isGryffindor(student) {
+  return student.house === "Gryffindor";
+}
+
+function isHufflepuff(student) {
+  return student.house === "Hufflepuff";
+}
+
+function isRavenclaw(student) {
+  return student.house === "Ravenclaw";
+}
+
+function isSlytherin(student) {
+  return student.house === "Slytherin";
+}
+
+function isPrefect(student) {
+  return student.isPrefect === 1;
+}
+
+function isInqSquad(student) {
+  return student.isInqSquad === 1;
+}
+
+/* SORTING */
 function selectSort(event) {
   const sortBy = event.target.dataset.sort;
   const sortDir = event.target.dataset.sortDirection;
