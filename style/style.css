@@ -24,3 +24,36 @@ h2 {
   line-height: 1.3;
   margin-bottom: 1rem;
 }
+
+/* HEADER STYLING */
+header {
+  background-color: var(--primary-200);
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  border-bottom: 3px solid var(--primary-300);
+  margin-bottom: 1rem;
+}
+
+.school-logo {
+  width: 100px;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 400px) {
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    padding: 1rem 2rem;
+    flex-direction: row;
+    gap: 2rem;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+}
