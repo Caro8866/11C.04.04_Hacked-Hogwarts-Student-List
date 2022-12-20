@@ -27,6 +27,8 @@
   --slytherin-secondary: rgba(205, 162, 49, 1);
   --hufflepuff-secondary: rgba(96, 96, 96, 1);
 
+  /* FONT COLOURS */
+  --fc-primary-100: rgb(248, 248, 248);
   /* TYPOGRAPHY */
   font-size: 1rem;
   /* Font-Family */
